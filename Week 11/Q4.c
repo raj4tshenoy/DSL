@@ -16,7 +16,7 @@ Node* getNode(int data){
 	return t;
 }
 
-void ancestors(Node *root,int x,int *flag)
+/*void ancestors(Node *root,int x,int *flag)
 {
 	if(root==NULL)
 		return;
@@ -36,10 +36,21 @@ void ancestors(Node *root,int x,int *flag)
 		printf("%d ",root->data);
 	if(root->data==x)
 		*flag=1;
+}*/
+
+void ancestors(Node* root, int x, int *flag){
+	if(root == NULL)
+		return;
+	if(root->data == x){*flag = 0;}
+	if(*flag){
+		printf("%d ",root->data);
+	}
+	ancestors(root->left,x,flag);
+	ancestors(root->right,x,flag);	
 }
 
 void main(){
-	int found = 0;
+	int found = 1;
 	Node *root = getNode(3);
 	root->left = getNode(1);
 	root->right = getNode(4);
@@ -51,7 +62,7 @@ void main(){
 
 /*****************************************************
 
-Script Created on: 2018/10/23 - Not Working
+Script Created on: 2018/10/23 - Verified Working
 Script Written by: RAJAT SHENOY
 Github: https://www.github.com/raj4tshenoy/DSL.git
 
